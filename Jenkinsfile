@@ -42,9 +42,9 @@ pipeline {
         
         stage('Quality Gate status'){
             steps{
-               scripts{
+              
                   waitForQualityGate abortPipeline: false, credentialsId: 'sonaqube-token'
-               }
+               
                 }
                
             }
