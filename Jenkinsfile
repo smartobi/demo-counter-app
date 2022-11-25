@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        PATH = "$PATH:/usr/share/maven/bin"
+    }
 
     stages {
 
@@ -30,7 +33,7 @@ pipeline {
         stage('SonarQube analysis'){
             steps{
                 scripts{
-                     withSonarQubeEnv(credentialsId: 'squ_39d327cd0d888acb52bee16124455d0a8b08ff08', 'sonar-api') {
+                     withSonarQubeEnv(credentialsId: 'sonarserver') {
                      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar:sonar'
                  }
                 }
