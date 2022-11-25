@@ -31,7 +31,7 @@ pipeline {
             steps{
                 scripts{
                      withSonarQubeEnv(credentialsId: 'squ_39d327cd0d888acb52bee16124455d0a8b08ff08', 'sonar-api') {
-                     sh 'mvn clean package sonar:sonar'
+                     sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar:sonar'
                  }
                 }
                
