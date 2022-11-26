@@ -33,7 +33,7 @@ pipeline {
         stage('SonarQube analysis'){
             steps{
                 
-                     withSonarQubeEnv('sonarserver') {
+                     withSonarQubeEnv('sonar-token') {
                      sh 'mvn clean package sonar:sonar'
                  }
                 }
@@ -58,11 +58,12 @@ pipeline {
                             artifactId: 'springboot',
                             classifier: '', 
                             file: 'target/Uber.jar',
-                            type: 'jar']
+                            type: 'jar'
+                            ]
                             
                     ],
                     credentialsId: 'nexus-auth', 
-                    groupId: '  com.example', 
+                    groupId: 'com.example', 
                     nexusUrl: '18.119.135.232:8081', 
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
