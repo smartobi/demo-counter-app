@@ -32,13 +32,14 @@ pipeline {
 
         stage('SonarQube analysis'){
             steps{
-                
+                   script{
                      withSonarQubeEnv(credentialsId: 'sonar-token') {
                      sh 'mvn clean package sonar:sonar'
                  }
                 }
                
             }
+        }
         
         stage('Quality Gate status'){
             steps{
